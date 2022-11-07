@@ -10,6 +10,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="tservico")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,6 +22,7 @@ public abstract class Servico {
 	private Integer id;
 	private int codigo;
 	private float preco;
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private LocalDateTime data;
 
 	public int getCodigo() {
