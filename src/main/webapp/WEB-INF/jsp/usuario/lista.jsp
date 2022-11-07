@@ -5,35 +5,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Cadastramento de Procedimentos</title>
+<title>Cadastramento de Usuários</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 
 	<c:import url="/WEB-INF/jsp/menu.jsp" />
-
+	
 	<div class="container mt-3">
-		<h3>Procedimentos: ${listagem.size()}</h3>
-<h4><a href="/procedimento">Novo Procedimento</a></h4>
-		<table class="table table-striped">
+		<h3>Usuários: ${listagem.size()}</h3>
 
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Tipo</th>
-					<th>Preventivo</th>
-					<th>Diagnóstico</th>
+					<th>Nome</th>
+					<th>Email</th>
 				</tr>
 			</thead>
 
 			<tbody>
-				<c:forEach var="p" items="${listagem}">
+				<c:forEach var="u" items="${listagem}">
 					<tr>
-						<td>${p.id}</td>
-						<td>${p.tipo}</td>
-						<td>${p.preventivo}</td>
-						<td>${p.diagnostico}</td>
-						<td><a href="/procedimento/${p.id}/excluir">excluir</a></td>
+						<td>${u.id}</td>
+						<td>${u.nome}</td>
+						<td>${u.email}</td>
+						<td>${u.senha}</td>
+						<td><a href="/usuario/${u.id}/excluir">excluir</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

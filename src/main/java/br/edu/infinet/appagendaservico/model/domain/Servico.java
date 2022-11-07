@@ -2,8 +2,21 @@ package br.edu.infinet.appagendaservico.model.domain;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tservico")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Servico {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private int codigo;
 	private float preco;

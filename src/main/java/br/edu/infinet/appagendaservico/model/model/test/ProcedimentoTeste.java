@@ -2,6 +2,7 @@ package br.edu.infinet.appagendaservico.model.model.test;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -9,11 +10,15 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infinet.appagendaservico.controller.ProcedimentoController;
 import br.edu.infinet.appagendaservico.model.domain.Procedimento;
+import br.edu.infinet.appagendaservico.model.service.ProcedimentoService;
 
-@Order(4)
+@Order(5)
 @Component
 public class ProcedimentoTeste implements ApplicationRunner{
 
+	@Autowired
+	private ProcedimentoService service;
+	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
@@ -26,7 +31,7 @@ public class ProcedimentoTeste implements ApplicationRunner{
 		p1.setCodigo(27);
 		p1.setPreco(100F);
 		p1.setData(LocalDateTime.now().minusDays(30));
-		ProcedimentoController.incluir(p1);
+		service.incluir(p1);
 		
 		System.out.println("Procedimento - " + p1);
 		
@@ -37,7 +42,7 @@ public class ProcedimentoTeste implements ApplicationRunner{
 		p2.setCodigo(10);
 		p2.setPreco(500F);
 		p2.setData(LocalDateTime.now().minusDays(180));
-		ProcedimentoController.incluir(p2);
+		service.incluir(p2);
 		
 		System.out.println("Procedimento - " + p2);
 		
@@ -48,7 +53,7 @@ public class ProcedimentoTeste implements ApplicationRunner{
 		p3.setCodigo(30);
 		p3.setPreco(700F);
 		p3.setData(LocalDateTime.now().minusDays(365));
-		ProcedimentoController.incluir(p3);
+		service.incluir(p3);
 		
 		System.out.println("Procedimento - " + p3);
 		

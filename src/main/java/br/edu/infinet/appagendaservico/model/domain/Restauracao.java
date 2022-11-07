@@ -1,8 +1,13 @@
 package br.edu.infinet.appagendaservico.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="trestauracao")
 public class Restauracao extends Servico {
 
-	private Integer id;
+	
 	private int codDente;
 	private String materialUtilizado;
 	private int anosGarantia;
@@ -25,13 +30,7 @@ public class Restauracao extends Servico {
 	public void setAnosGarantia(int anosGarantia) {
 		this.anosGarantia = anosGarantia;
 	}
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
+
 	@Override
 	public String toString() {
 		return super.toString() + ";" + codDente + ";" + materialUtilizado + ";" + anosGarantia;

@@ -3,23 +3,27 @@ package br.edu.infinet.appagendaservico.model.model.test;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import br.edu.infinet.appagendaservico.controller.ConsultaController;
 import br.edu.infinet.appagendaservico.model.domain.Consulta;
 import br.edu.infinet.appagendaservico.model.domain.Paciente;
 import br.edu.infinet.appagendaservico.model.domain.Procedimento;
 import br.edu.infinet.appagendaservico.model.domain.RaioX;
 import br.edu.infinet.appagendaservico.model.domain.Restauracao;
 import br.edu.infinet.appagendaservico.model.domain.Servico;
+import br.edu.infinet.appagendaservico.model.service.ConsultaService;
 
-@Order(1)
+@Order(3)
 @Component
 public class ConsultaTeste implements ApplicationRunner{
 
+	@Autowired
+	private ConsultaService service;
+	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
@@ -74,7 +78,7 @@ public class ConsultaTeste implements ApplicationRunner{
 		c1.setRetorno(false);
 		c1.setPaciente(p1);
 		c1.setServicos(servicos1);
-		ConsultaController.incluir(c1);
+		service.incluir(c1);
 		
 		System.out.println("Consulta - " + c1);
 		
@@ -85,7 +89,7 @@ public class ConsultaTeste implements ApplicationRunner{
 		c2.setRetorno(false);
 		c2.setPaciente(p1);
 		c2.setServicos(servicos2);
-		ConsultaController.incluir(c2);
+		service.incluir(c2);
 		System.out.println("Consulta - " + c2);
 		
 		Consulta c3 = new Consulta(p2);
@@ -94,7 +98,7 @@ public class ConsultaTeste implements ApplicationRunner{
 		c3.setPrimeiraVez(false);
 		c3.setRetorno(true);
 		c3.setServicos(servicos2);
-		ConsultaController.incluir(c3);
+		service.incluir(c3);
 		System.out.println("Consulta - " + c3);
 		
 	}

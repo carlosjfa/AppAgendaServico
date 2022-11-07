@@ -1,8 +1,12 @@
 package br.edu.infinet.appagendaservico.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="traiox")
 public class RaioX extends Servico {
 
-	private Integer id;
 	private String tipo;
 	private String dentistaResponsavel;
 	private String diagnostico;
@@ -26,12 +30,6 @@ public class RaioX extends Servico {
 		this.diagnostico = diagnostico;
 	}
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	@Override
 	public String toString() {
 		return super.toString() + ";" + tipo + ";" + dentistaResponsavel + ";" + diagnostico;

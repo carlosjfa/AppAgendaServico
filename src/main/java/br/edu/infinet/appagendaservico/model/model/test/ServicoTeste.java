@@ -2,6 +2,7 @@ package br.edu.infinet.appagendaservico.model.model.test;
 
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -11,10 +12,14 @@ import br.edu.infinet.appagendaservico.controller.ServicoController;
 import br.edu.infinet.appagendaservico.model.domain.Procedimento;
 import br.edu.infinet.appagendaservico.model.domain.RaioX;
 import br.edu.infinet.appagendaservico.model.domain.Restauracao;
+import br.edu.infinet.appagendaservico.model.service.ServicoService;
 
-@Order(3)
+@Order(4)
 @Component
 public class ServicoTeste implements ApplicationRunner{
+	
+	@Autowired
+	private ServicoService service;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -28,7 +33,7 @@ public class ServicoTeste implements ApplicationRunner{
 		p1.setCodigo(12);
 		p1.setPreco(1000F);
 		p1.setData(LocalDateTime.now().minusDays(3));
-		ServicoController.incluir(p1);
+		service.incluir(p1);
 		
 		System.out.println("Procedimento - " + p1);
 		
@@ -39,7 +44,7 @@ public class ServicoTeste implements ApplicationRunner{
 		r1.setCodigo(27);
 		r1.setPreco(100F);
 		r1.setData(LocalDateTime.now().minusDays(30));
-		ServicoController.incluir(r1);
+		service.incluir(r1);
 		System.out.println("Restauração - " + r1);
 		
 		
@@ -50,7 +55,7 @@ public class ServicoTeste implements ApplicationRunner{
 		ra.setCodigo(28);
 		ra.setPreco(600F);
 		ra.setData(LocalDateTime.now().minusDays(15));
-		ServicoController.incluir(ra);
+		service.incluir(ra);
 		
 		System.out.println("Raio X - " + ra);
 		
