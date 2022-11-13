@@ -2,12 +2,14 @@ package br.edu.infinet.appagendaservico.model.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,9 +25,53 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name="idUsuario")
 	private List<Paciente> pacientes;
+	@OneToMany
+	@JoinColumn(name="idUsuario")
+	private List<Consulta> consultas;
+	@OneToMany
+	@JoinColumn(name="idUsuario")
+	private List<Servico> servicos;
+	@OneToOne(cascade=CascadeType.PERSIST)
+	@JoinColumn(name="idEndereco")
+	private Endereco endereco;
 	
 	
-	
+	public List<Consulta> getConsultas() {
+		return consultas;
+	}
+
+
+
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
+	}
+
+
+
+	public List<Servico> getServicos() {
+		return servicos;
+	}
+
+
+
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+
+
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}

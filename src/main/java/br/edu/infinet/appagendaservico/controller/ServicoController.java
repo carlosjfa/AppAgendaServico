@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infinet.appagendaservico.model.domain.Servico;
+import br.edu.infinet.appagendaservico.model.domain.Usuario;
 import br.edu.infinet.appagendaservico.model.service.ServicoService;
 
 @Controller
@@ -19,8 +21,8 @@ public class ServicoController {
 	private ServicoService service;
 	
 	@GetMapping(value="/lista")
-	public String telaLista(Model model) {
-		model.addAttribute("listagem",  service.obterLista());
+	public String telaLista(Model model, @SessionAttribute("user") Usuario user) {
+		model.addAttribute("listagem",  service.obterLista(user));
 		return "servico/lista";
 	}
 	

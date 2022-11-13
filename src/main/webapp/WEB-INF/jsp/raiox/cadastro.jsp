@@ -21,6 +21,17 @@
 		<h2>Raio X</h2>
 		<form action="/raiox/incluir" method="post">
 			<div class="form-group">
+				<label for="tipo">Código:</label> <input type="text"
+					class="form-control" id="tipo" placeholder="Entre com o seu código"
+					name="codigo">
+			</div>
+			
+			<div class="form-group">
+				<label for="tipo">Nome:</label> <input type="text"
+					class="form-control" id="tipo" placeholder="Entre com o seu nome"
+					name="nome">
+			</div>
+			<div class="form-group">
 				<label for="tipo">Tipo:</label> <input type="text"
 					class="form-control" id="tipo" placeholder="Entre com o seu tipo"
 					name="tipo">
@@ -34,6 +45,11 @@
 				<label for="diagnistico">Diagnóstico:</label> <input type="text"
 					class="form-control" id="diagnostico" placeholder="Entre com o sue diagnóstico"
 					name="diagnostico">
+			</div>
+			<div class="form-group">
+				<label for="diagnistico">Preço:</label> <input type="text"
+					class="form-control" id="preco" placeholder="Entre com o seu preço"
+					name="preco">
 			</div>
 			<button type="submit" class="btn btn-default">Cadastrar</button>
 		</form>

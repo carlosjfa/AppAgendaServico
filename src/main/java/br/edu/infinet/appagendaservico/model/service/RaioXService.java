@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infinet.appagendaservico.model.domain.RaioX;
+import br.edu.infinet.appagendaservico.model.domain.Usuario;
 import br.edu.infinet.appagendaservico.model.repository.RaioXRepository;
 
 @Service
@@ -24,5 +25,9 @@ public class RaioXService {
 	
 	public Collection<RaioX> obterLista() {
 		return (Collection<RaioX>) raioXRepository.findAll();
+	}
+	
+	public Collection<RaioX> obterLista(Usuario user) {
+		return (Collection<RaioX>) raioXRepository.findAll(user.getId());
 	}
 }

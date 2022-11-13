@@ -19,6 +19,7 @@
 			<thead>
 				<tr>
 					<th>ID</th>
+					<th>Nome</th>
 					<th>Código</th>
 					<th>Preço</th>
 					<th>Data</th>
@@ -29,6 +30,7 @@
 				<c:forEach var="s" items="${listagem}">
 					<tr>
 						<td>${s.id}</td>
+						<td>${s.nome}</td>
 						<td>${s.codigo}</td>
 						<td>${s.preco}</td>
 						<td>${s.data}</td>

@@ -3,12 +3,16 @@ package br.edu.infinet.appagendaservico.model.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,10 +28,15 @@ public class Consulta {
 	private String convenio;
 	private boolean primeiraVez;
 	private boolean retorno;
-	@Transient
+	@OneToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name="idPaciente")
 	private Paciente paciente;
-	@Transient
+	@ManyToMany(cascade = CascadeType.DETACH)
 	private List<Servico> servicos;
+	
+	@ManyToOne
+	@JoinColumn(name="idUsuario")
+	private Usuario usuario;
 	
 	public Consulta() {
 		this.data = LocalDateTime.now();
@@ -84,6 +93,16 @@ public class Consulta {
 
 	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
+	}
+	
+	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

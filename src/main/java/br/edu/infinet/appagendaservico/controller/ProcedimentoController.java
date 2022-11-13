@@ -1,5 +1,7 @@
 package br.edu.infinet.appagendaservico.controller;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infinet.appagendaservico.model.domain.Procedimento;
+import br.edu.infinet.appagendaservico.model.domain.Usuario;
 import br.edu.infinet.appagendaservico.model.service.ProcedimentoService;
 
 @Controller
@@ -21,8 +25,8 @@ public class ProcedimentoController {
 
 	
 	@GetMapping(value="/lista")
-	public String telaLista(Model model) {
-		model.addAttribute("listagem",  service.obterLista());
+	public String telaLista(Model model, @SessionAttribute("user") Usuario user) {
+		model.addAttribute("listagem",  service.obterLista(user));
 		return "procedimento/lista";
 	}
 	
@@ -34,7 +38,9 @@ public class ProcedimentoController {
 	
 
 	@PostMapping(value="/incluir")
-	public String incluir(Procedimento procedimento) {
+	public String incluir(Procedimento procedimento, @SessionAttribute("user") Usuario user) {
+		procedimento.setUsuario(user);
+		procedimento.setData(LocalDateTime.now());
 		service.incluir(procedimento);
 		return "redirect:/procedimento/lista";
 		

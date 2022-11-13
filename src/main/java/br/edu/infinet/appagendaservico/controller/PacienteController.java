@@ -21,8 +21,8 @@ public class PacienteController {
 	private PacienteService service;
 	
 	@GetMapping(value="/lista")
-	public String telaLista(Model model) {
-		model.addAttribute("listagem",  service.obterLista());
+	public String telaLista(Model model, @SessionAttribute("user") Usuario user) {
+		model.addAttribute("listagem",  service.obterLista(user));
 		return "paciente/lista";
 	}
 	

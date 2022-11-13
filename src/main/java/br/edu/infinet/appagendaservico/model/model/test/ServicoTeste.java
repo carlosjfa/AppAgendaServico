@@ -12,6 +12,7 @@ import br.edu.infinet.appagendaservico.controller.ServicoController;
 import br.edu.infinet.appagendaservico.model.domain.Procedimento;
 import br.edu.infinet.appagendaservico.model.domain.RaioX;
 import br.edu.infinet.appagendaservico.model.domain.Restauracao;
+import br.edu.infinet.appagendaservico.model.domain.Usuario;
 import br.edu.infinet.appagendaservico.model.service.ServicoService;
 
 @Order(4)
@@ -26,35 +27,44 @@ public class ServicoTeste implements ApplicationRunner{
 		
 		System.out.println("## Cadastramento de Serviços ##");
 		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		
 		Procedimento p1 = new Procedimento();
 		p1.setPreventivo(false);
+		p1.setNome("Procedimento");
 		p1.setTipo("Clareamento");
 		p1.setDiagnostico("Clareamento");
 		p1.setCodigo(12);
 		p1.setPreco(1000F);
 		p1.setData(LocalDateTime.now().minusDays(3));
+		p1.setUsuario(usuario);
 		service.incluir(p1);
 		
 		System.out.println("Procedimento - " + p1);
 		
 		Restauracao r1 = new Restauracao();
+		r1.setNome("Restauração");
 		r1.setCodDente(25);
 		r1.setAnosGarantia(20);
 		r1.setMaterialUtilizado("cerâmica");
 		r1.setCodigo(27);
 		r1.setPreco(100F);
 		r1.setData(LocalDateTime.now().minusDays(30));
+		r1.setUsuario(usuario);
 		service.incluir(r1);
 		System.out.println("Restauração - " + r1);
 		
 		
 		RaioX ra = new RaioX();
+		ra.setNome("RaioX");
 		ra.setTipo("Panorâmica");
 		ra.setDentistaResponsavel("José Luiz");
 		ra.setDiagnostico("Todos os dentes romperam a gengiva");
 		ra.setCodigo(28);
 		ra.setPreco(600F);
 		ra.setData(LocalDateTime.now().minusDays(15));
+		ra.setUsuario(usuario);
 		service.incluir(ra);
 		
 		System.out.println("Raio X - " + ra);

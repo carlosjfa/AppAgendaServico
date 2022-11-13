@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infinet.appagendaservico.model.domain.Procedimento;
+import br.edu.infinet.appagendaservico.model.domain.Usuario;
 import br.edu.infinet.appagendaservico.model.repository.ProcedimentoRepository;
 
 @Service
@@ -25,6 +26,10 @@ public class ProcedimentoService {
 		
 		public Collection<Procedimento> obterLista(){
 			return (Collection<Procedimento>) procedimentoRepository.findAll();
+		}
+		
+		public Collection<Procedimento> obterLista(Usuario user){
+			return (Collection<Procedimento>) procedimentoRepository.findAll(user.getId());
 		}
 		
 }

@@ -16,7 +16,7 @@
 <body>
 
 	<c:import url="/WEB-INF/jsp/menu.jsp" />
-	
+
 
 	<div class="container mt-3">
 		<h2>Consulta</h2>
@@ -28,22 +28,45 @@
 			</div>
 			<div class="form-group">
 				<label for="convenio">Convênio</label> <input type="text"
-					class="form-control" id="convenio" placeholder="Entre com o seu convênio"
-					name="convenio">
+					class="form-control" id="convenio"
+					placeholder="Entre com o seu convênio" name="convenio">
 			</div>
 			<div class="form-group">
 				<label for="primeiraVez">Primeira Vez:</label> <input type="text"
-					class="form-control" id="primairaVez" placeholder="Entre com a sua primeira vez"
-					name="primairaVez">
+					class="form-control" id="primairaVez"
+					placeholder="Entre com a sua primeira vez" name="primairaVez">
 			</div>
 			<div class="form-group">
 				<label for="retorno">Retorno:</label> <input type="text"
-					class="form-control" id="retorno" placeholder="Entre com o seu retorno"
-					name="retorno">
+					class="form-control" id="retorno"
+					placeholder="Entre com o seu retorno" name="retorno">
 			</div>
+
+			<div class="form-group">
+
+				<label>Paciente:</label> <select name="paciente"
+					class="form-control">
+					<c:forEach var="p" items="${pacientes}">
+						<option value="${p.id}">${p.nome}</option>
+					</c:forEach>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label>Serviços:</label>
+				<c:forEach var="s" items="${servicos}">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" name="servicos"
+							value="${s.id}"> <label class="form-check-label">${s.nome}</label>
+					</div>
+				</c:forEach>
+			</div>
+
 			<button type="submit" class="btn btn-default">Cadastrar</button>
 		</form>
 	</div>
+
+
 
 </body>
 </html>
