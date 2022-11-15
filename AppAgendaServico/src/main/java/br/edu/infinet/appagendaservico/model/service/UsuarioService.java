@@ -6,38 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infinet.appagendaservico.clients.IEnderecoClient;
+import br.edu.infinet.appagendaservico.clients.IUsuarioClient;
 import br.edu.infinet.appagendaservico.model.domain.Endereco;
-import br.edu.infinet.appagendaservico.model.domain.Servico;
 import br.edu.infinet.appagendaservico.model.domain.Usuario;
-import br.edu.infinet.appagendaservico.model.repository.UsuarioRespository;
 
 @Service
 public class UsuarioService {
 	
 	@Autowired
 	private IEnderecoClient enderecoClient;
-
-
+	
 	@Autowired
-	private UsuarioRespository repository;
+	private IUsuarioClient usuarioClient;
 
 	public void incluir(Usuario usuario) {
-		repository.save(usuario);
+		usuarioClient.incluir(usuario);
 	}
 
 	public void excluir(Integer id) {
-		repository.deleteById(id);
+		usuarioClient.excluir(id);
 	}
 	
 	public Usuario validar(String email, String senha) {
-		Usuario usuario = repository.findByEmail(email);
-		
-		if(usuario != null && senha.equals(usuario.getSenha())) {
-			return usuario;
-		}
-		
-		return null;
-		
+		return usuarioClient.validar(email, senha);
 	}
 	
 	public Endereco obterCep(String cep) {
@@ -45,7 +36,7 @@ public class UsuarioService {
 	}
 	
 	public Collection<Usuario> obterLista(){
-		return (Collection<Usuario>) repository.findAll();
+		return (Collection<Usuario>) usuarioClient.obterLista();
 	}
 	
 	

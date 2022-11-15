@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "74040e3c-e45e-46ad-9a37-12bae5d88d5c",
+		"name": "api-usuario",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11310428"
+	},
+	"item": [
+		{
+			"name": "incluir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"flavia@admin.com\",\n    \"nome\": \"Flavia\",\n    \"senha\": \"123\",\n    \"endereco\": {\n        \"cep\": \"21020-010\",\n        \"logradouro\": \"Rua São José\",\n        \"bairro\": \"Centro\",\n        \"localidade\": \"Rio de Janeiro\",\n        \"uf\": \"RJ\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8081/api/usuario/incluir",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"usuario",
+						"incluir"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/usuario/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"usuario",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "excluir",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/usuario/2/excluir",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"usuario",
+						"2",
+						"excluir"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "\"flavia@admin.com'\"",
+							"type": "text"
+						},
+						{
+							"key": "senha",
+							"value": "\"1234\"",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/usuario/validar?email=\"flavia@admin.com\"&senha=\"123\"",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"usuario",
+						"validar"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "\"flavia@admin.com\""
+						},
+						{
+							"key": "senha",
+							"value": "\"123\""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
